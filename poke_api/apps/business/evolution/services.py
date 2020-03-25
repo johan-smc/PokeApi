@@ -110,7 +110,7 @@ def fetch_evolution_chain_from_id(
         id: int
 ) -> EvolutionChain:
     """
-    Fetch and save a evolution chain from a id, with the url save in
+    Fetch and save a evolution chain from an id, with the url saved in
     constants file
     :param id:int
     :return evolution_chain:EvolutionChain
