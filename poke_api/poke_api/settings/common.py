@@ -13,16 +13,17 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import sys
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+PROJECT_ROOT = os.path.dirname(BASE_DIR)
 
 SITE_NAME = os.path.basename(BASE_DIR)
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'run', 'static')
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'run', 'static')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'run', 'media')
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'run', 'media')
 
-sys.path.append(os.path.normpath(os.path.join(BASE_DIR, 'apps')))
+sys.path.append(os.path.normpath(os.path.join(PROJECT_ROOT, 'apps')))
 
 
 SECRET_KEY = os.environ.get(
@@ -52,7 +53,13 @@ THIRD_PARTY_APPS = [
     'rest_framework'
 ]
 
-LOCAL_APPS = []
+LOCAL_APPS = [
+    'utils',
+    'business.evolution',
+    'business.pokemon',
+    'business.pokemon_species',
+    'business.stats'
+]
 
 
 MIDDLEWARE = [
