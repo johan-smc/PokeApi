@@ -38,7 +38,6 @@ def create_pokemon_stat(
     provided as parameters """
 
     stat_db = get_or_create_stat(**stat)
-    print(stat_db)
     pokemon_stat = PokemonStat(
         base_stat=base_stat,
         effort=effort,
