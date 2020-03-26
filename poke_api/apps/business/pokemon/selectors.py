@@ -17,3 +17,16 @@ def get_pokemon_by_id(
         raise ValidationError("Pokemon not exists.")
     return pokemon[0]
 
+
+def get_pokemon_by_name(
+        *,
+        name: int
+) -> Pokemon:
+    """
+    Return a Pokemon by name, if the element not exists raise a error.
+    """
+    pokemon = Pokemon.objects.filter(name=name)
+    if not pokemon.exists():
+        raise ValidationError("Pokemon not exists.")
+    return pokemon[0]
+
