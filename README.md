@@ -14,7 +14,8 @@ available on the [Poke api](https://pokeapi.co/docs/v2.html).
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Running the Django](#Running-the-Django)
-- [Tasks](#gulp-tasks)
+- [Tasks](#tasks)
+
 
 ## Contributors
 | Name                       | GitHub                                | 
