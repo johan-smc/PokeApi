@@ -30,6 +30,5 @@ class GetPokemonByIdTests(APITestCase):
     def test_get_company_by_owner(self):
         url = reverse('pokemon', args=(self.pokemon.name, ))
         response = self.client.get(url)
-        print(response.data)
         self.assertEqual(response.data.get('id'), self.data.get('id'))
         self.assertEqual(response.status_code, status.HTTP_200_OK)

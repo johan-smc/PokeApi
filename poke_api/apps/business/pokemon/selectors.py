@@ -20,7 +20,7 @@ def get_pokemon_by_id(
 
 def get_pokemon_by_name(
         *,
-        name: int
+        name: str
 ) -> Pokemon:
     """
     Return a Pokemon by name, if the element not exists raise a error.

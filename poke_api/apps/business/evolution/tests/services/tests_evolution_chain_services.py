@@ -1,9 +1,12 @@
+from unittest import mock
+
 from django.core.exceptions import ValidationError
 from django.test import TestCase
 
 from business.evolution.models import EvolutionChain, ChainLink
 from business.evolution.services import create_evolution_chain, \
-    update_evolution_chain, create_or_update_evolution_chain
+    update_evolution_chain, create_or_update_evolution_chain, \
+    fetch_evolution_chain_from_id
 from business.pokemon_species.models import PokemonSpecies
 
 
@@ -102,3 +105,37 @@ class CreateOrUpdateEvolutionChainTests(TestCase):
         }
         self.service(**self.data)
         self.assertEqual(2, EvolutionChain.objects.count())
+
+
+class CreateFetchEvolutionChainFromIdTests(TestCase):
+    """Group of tests that ensures check if a evolution is being created
+    correctly """
+
+    def setUp(self):
+        self.data = {
+            "id": 1,
+            "chain": {
+                "species": {
+                    "name": "rattata",
+                },
+                "evolves_to": [
+                    {
+                        "species": {
+                            "name": "raticate",
+                        },
+                        "evolves_to": []
+                    }
+                ]
+            }
+        }
+        self.service = fetch_evolution_chain_from_id
+
+    @mock.patch('business.evolution.services.get_request')
+    def test_fetch_evolution_chain_from_id(self, mock_get):
+        mock_get.return_value = self.data
+        self.assertEqual(0, EvolutionChain.objects.count())
+        new_pokemon = self.service(
+            id=1
+        )
+        self.assertEqual(1, EvolutionChain.objects.count())
+        self.assertEqual(new_pokemon, EvolutionChain.objects.first())
