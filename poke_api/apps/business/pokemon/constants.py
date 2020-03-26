@@ -1,3 +1,3 @@
-from utils.constants import POKEAPIURL
+from utils.constants import POKE_API_URL
 
-URL_POKEMON = POKEAPIURL + "pokemon/"
+URL_POKEMON = POKE_API_URL + "pokemon/"

@@ -33,4 +33,3 @@ class CreatePokemonStatTests(TestCase):
         new_pokemon_stat = self.service(**self.data)
         self.assertEqual(1, PokemonStat.objects.count())
         self.assertEqual(new_pokemon_stat, PokemonStat.objects.first())
-

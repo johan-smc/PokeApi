@@ -1,5 +1,5 @@
-from django.utils.translation import ugettext_lazy as _
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 from business.evolution.models import ChainLink
 from business.pokemon_species.models import PokemonSpecies
@@ -23,7 +23,7 @@ class Pokemon(models.Model):
         return PokemonStat.objects.filter(pokemon__id=self.id)
 
     def evolutions(self):
-        chain_link = ChainLink.objects.get(species__id=self.species.id)\
+        chain_link = ChainLink.objects.get(species__id=self.species.id) \
             .evolves_from
         evolves_from = []
         if chain_link is not None:
@@ -34,12 +34,12 @@ class Pokemon(models.Model):
         return evolves_from
 
     def preevolution(self):
-        chain_link = ChainLink.objects.get(species__id=self.species.id)\
+        chain_link = ChainLink.objects.get(species__id=self.species.id) \
             .evolves_to
         evolves_to = []
         for chain in chain_link:
             pokemon = chain.species.pokemon
-            pokemon.type="PreEvolution"
+            pokemon.type = "PreEvolution"
             evolves_to.append(pokemon)
             evolves_to += pokemon.preevolution()
         return evolves_to

@@ -1,8 +1,6 @@
 from django.core.exceptions import ValidationError
 
 from business.pokemon.models import Pokemon
-from business.stats.models import Stat
-from business.stats.services import create_stat
 
 
 def get_pokemon_by_id(
@@ -29,4 +27,3 @@ def get_pokemon_by_name(
     if not pokemon.exists():
         raise ValidationError("Pokemon not exists.")
     return pokemon[0]
-

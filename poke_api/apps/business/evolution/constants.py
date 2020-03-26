@@ -1,3 +1,3 @@
-from utils.constants import POKEAPIURL
+from utils.constants import POKE_API_URL
 
-URL_EVOLUTION_CHAIN = POKEAPIURL + "evolution-chain/"
+URL_EVOLUTION_CHAIN = POKE_API_URL + "evolution-chain/"

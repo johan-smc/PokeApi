@@ -59,5 +59,5 @@ class CreateChainLinkTests(TestCase):
                 'evolves_to': []
             }]
         })
-        final = self.service(**self.data)
+        self.service(**self.data)
         self.assertEqual(3, ChainLink.objects.count())
