@@ -12,13 +12,9 @@ available on the [Poke api](https://pokeapi.co/docs/v2.html).
 
 - [Contributors](#contributors)
 - [Prerequisites](#prerequisites)
-	- [Node (npm)](#node-npm)
 - [Installation](#installation)
-	- [Clone the repository](#clone-the-repository)
-	- [Install the requirements](#install-the-requirements)
-- [Running the ReactApp](#running-the-reactapp)
-- [Gulp tasks](#gulp-tasks)
-- [Licence](#licence)
+- [Running the Django](#Running-the-Django)
+- [Tasks](#gulp-tasks)
 
 ## Contributors
 | Name                       | GitHub                                | 
