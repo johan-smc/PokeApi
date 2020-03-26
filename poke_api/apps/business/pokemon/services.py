@@ -59,10 +59,6 @@ def update_pokemon(
     pokemon.full_clean()
     pokemon.save()
 
-    for stat in stats:
-        stat['pokemon'] = pokemon
-        create_pokemon_stat(**stat)
-
     return pokemon
 
 
