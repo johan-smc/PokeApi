@@ -93,14 +93,16 @@ def create_chain_link(
     """
     species = create_pokemon_species(**species)
     chain_link = ChainLink(
-        species=species
+        species=species,
     )
     chain_link.full_clean()
     chain_link.save()
+
     for evolve in evolves_to:
-        chain_link.evolves_to.add(create_chain_link_from_raw_data(data=evolve))
-    chain_link.full_clean()
-    chain_link.save()
+        evolves_to_chain = create_chain_link_from_raw_data(data=evolve)
+        evolves_to_chain.evolves_from = chain_link
+        evolves_to_chain.full_clean()
+        evolves_to_chain.save()
 
     return chain_link
 

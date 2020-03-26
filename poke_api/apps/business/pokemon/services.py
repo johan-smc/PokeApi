@@ -146,7 +146,8 @@ def create_pokemon_by_chain_link(
     parameters in raw data, this function execute recursive in every chain link
     """
     create_pokemon_by_species(species=chain_link.species)
-    for chain in chain_link.evolves_to:
+    evolves_to = chain_link.evolves_to.all()
+    for chain in evolves_to:
         create_pokemon_by_chain_link(chain_link=chain)
 
 

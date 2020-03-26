@@ -5,10 +5,13 @@ from business.pokemon_species.models import PokemonSpecies
 
 
 class ChainLink(models.Model):
-    evolves_to = models.ManyToManyField(
+    evolves_from = models.ForeignKey(
         "self",
+        on_delete=models.PROTECT,
         related_name='chain_link',
-        verbose_name=_(u'evolves_to'),
+        verbose_name=_(u'evolves_from'),
+        null=True,
+        blank=True
     )
     species = models.OneToOneField(
         PokemonSpecies,
@@ -16,6 +19,10 @@ class ChainLink(models.Model):
         related_name='chain_link',
         verbose_name=_(u'species')
     )
+
+    @property
+    def evolves_to(self):
+        return ChainLink.objects.filter(evolves_from__id=self.id)
 
 
 class EvolutionChain(models.Model):

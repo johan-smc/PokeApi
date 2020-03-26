@@ -45,3 +45,19 @@ class CreateChainLinkTests(TestCase):
         })
         create_chain_link_from_raw_data(data=self.data)
         self.assertEqual(2, ChainLink.objects.count())
+
+    def test_create_chain_link_depth_2_levels(self):
+        self.assertEqual(0, ChainLink.objects.count())
+        self.data['evolves_to'].append({
+            'species': {
+                'name': 'second'
+            },
+            'evolves_to': [{
+                'species': {
+                    'name': 'second'
+                },
+                'evolves_to': []
+            }]
+        })
+        final = self.service(**self.data)
+        self.assertEqual(3, ChainLink.objects.count())

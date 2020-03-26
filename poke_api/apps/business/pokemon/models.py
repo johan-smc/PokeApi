@@ -21,7 +21,7 @@ class Pokemon(models.Model):
 class PokemonStat(models.Model):
     base_stat = models.IntegerField()
     effort = models.IntegerField()
-    pokemon = models.OneToOneField(
+    pokemon = models.ForeignKey(
         Pokemon,
         on_delete=models.PROTECT,
         related_name='stats',

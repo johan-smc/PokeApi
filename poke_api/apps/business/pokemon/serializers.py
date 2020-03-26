@@ -7,7 +7,7 @@ from business.stats.serializers import StatSerializer
 class PokemonStatSerializer(serializers.Serializer):
     base_stat = serializers.IntegerField()
     effort = serializers.IntegerField()
-    stat = StatSerializer(many=True)
+    stat = StatSerializer()
 
 
 class PokemonSerializer(serializers.Serializer):
